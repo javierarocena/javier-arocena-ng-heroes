@@ -1,0 +1,30 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer
+    #drawer
+    (closed)="heroEditing = undefined"
+    class="example-sidenav"
+    mode="side"
+  >
+    <div class="drawer-content" *ngIf="heroEditing" animDelayFadeIn>
+      <app-heroe-editor-page
+        [hero]="heroEditing"
+        (onSubmit)="drawer.close(); heroEditing = undefined"
+      ></app-heroe-editor-page>
+    </div>
+    <button mat-icon-button class="close-btn" (click)="drawer.close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-drawer>
+
+  <div class="sidenav-content" animFadeIn>
+    <app-spinner *ngIf="isLoading"></app-spinner>
+    <app-heroes-list
+      [heroes]="heroes"
+      (onSearch)="searchHero($event)"
+      (onHeroSelect)="onHeroSelect($event)"
+      (onHeroEdit)="showEditor($event)"
+      (onHeroDelete)="deleteHero($event)"
+      (onCreate)="onCreateHero()"
+    ></app-heroes-list>
+  </div>
+</mat-drawer-container>

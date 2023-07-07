@@ -1,0 +1,46 @@
+<div class="heroes-list">
+  <h1 class="heroes-list__title">My heroes</h1>
+  <button (click)="heroCreateEmitter.emit()" mat-raised-button>Add</button>
+</div>
+
+<mat-form-field appearance="standard">
+  <mat-label>Search...</mat-label>
+  <input
+    placeholder="Ej: Batman"
+    matInput
+    type="text"
+    [formControl]="search"
+    autofocus
+    (keyup)="onSearchInputChange($event)"
+  />
+  <button
+    *ngIf="search.value"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="onClear()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-selection-list #list [multiple]="false">
+  <mat-list-option
+    *ngFor="let hero of heroes"
+    [value]="hero"
+    role="listitem"
+    animFadeIn
+    (click)="heroSelectEmitter.emit(hero)"
+  >
+    <app-hero-item
+      [hero]="hero"
+      (onEdit)="heroEditEmitter.emit($event)"
+      (onDelete)="heroDeleteEmitter.emit($event)"
+    ></app-hero-item>
+  </mat-list-option>
+</mat-selection-list>
+
+<p *ngIf="!heroes?.length && !search.value">Añade tu primer héroe</p>
+<p *ngIf="!heroes?.length && search.value">
+  No results for "{{ search.value }}"
+</p>

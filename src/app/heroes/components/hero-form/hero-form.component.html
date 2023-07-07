@@ -1,0 +1,66 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-icon matPrefix>face</mat-icon>
+      <mat-label>Name</mat-label>
+      <input
+        placeholder="Name"
+        inputUppercase
+        matInput
+        id="name"
+        formControlName="name"
+        type="text"
+        autofocus
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-icon matPrefix>visibility</mat-icon>
+      <mat-label>Main color</mat-label>
+      <input
+        placeholder="Main color"
+        matInput
+        id="color"
+        formControlName="color"
+        type="color"
+        autofocus
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-icon matPrefix>face</mat-icon>
+      <mat-label>Event</mat-label>
+      <input
+        placeholder="Date"
+        matInput
+        id="date"
+        formControlName="date"
+        type="date"
+        autofocus
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-icon matPrefix>height</mat-icon>
+      <mat-label>Height</mat-label>
+      <input
+        placeholder="Height"
+        matInput
+        id="height"
+        formControlName="height"
+        type="number"
+        autofocus
+      />
+    </mat-form-field>
+  </div>
+
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+    <button mat-button type="submit" [disabled]="!profileForm.valid">
+      Save
+    </button>
+  </mat-card-actions>
+</form>

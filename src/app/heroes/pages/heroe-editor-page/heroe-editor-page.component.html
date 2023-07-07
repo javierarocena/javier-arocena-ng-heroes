@@ -1,0 +1,11 @@
+<div class="hero-editor-page">
+  <mat-card animFadeIn>
+    <mat-card-content>
+      <h2>{{ hero.name || "New hero" }}</h2>
+      <app-hero-form
+        [hero]="hero"
+        (onSubmit)="onSubmit($event)"
+      ></app-hero-form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,22 @@
+<div class="hero-item">
+  <span>{{ hero.name }}</span>
+
+  <button
+    mat-icon-button
+    matSuffix
+    [matMenuTriggerFor]="menu"
+    (click)="$event.stopPropagation()"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</div>
+<mat-menu #menu="matMenu">
+  <button (click)="onEditBtnPressed($event)" mat-menu-item>
+    <mat-icon>mode_edit</mat-icon>
+    <span>Edit</span>
+  </button>
+  <button (click)="onRemoveBtnPressed($event)" mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>
